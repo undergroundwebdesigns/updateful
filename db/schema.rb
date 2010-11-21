@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101121015703) do
+ActiveRecord::Schema.define(:version => 20101121022428) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,38 @@ ActiveRecord::Schema.define(:version => 20101121015703) do
     t.integer  "city_id"
     t.integer  "postal_code_id"
     t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.integer  "state_id"
+    t.string   "name"
+    t.string   "local_name"
+    t.float    "lat"
+    t.float    "long"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
+    t.integer  "region_id"
+    t.string   "name"
+    t.string   "local_name"
+    t.string   "iso_alpha_3", :limit => 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "postal_codes", :force => true do |t|
+    t.integer  "city_id"
+    t.string   "postal_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,6 +69,14 @@ ActiveRecord::Schema.define(:version => 20101121015703) do
 
   add_index "services_users", ["service_id"], :name => "index_services_users_on_service_id"
   add_index "services_users", ["user_id"], :name => "index_services_users_on_user_id"
+
+  create_table "states", :force => true do |t|
+    t.integer  "country_id"
+    t.string   "name"
+    t.string   "local_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
