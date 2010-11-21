@@ -25,8 +25,9 @@ gem 'mysql2'
 # Include jQuery:
 gem 'jquery-rails'
 
-# Include devise
+# Include devise and it's open id plugin:
 gem 'devise'
+gem 'devise_openid_authenticatable'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

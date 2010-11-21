@@ -25,5 +25,9 @@ Updateful::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  # Enable rack, for use with the open_id plugin.
+  config.middleware.insert_before(Warden::Manager, Rack::OpenID)
+  
 end
 
