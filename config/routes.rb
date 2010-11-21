@@ -1,4 +1,7 @@
 Updateful::Application.routes.draw do
+  
+  root :to => 'content#index'
+  
   resources :services
 
   resources :addresses
