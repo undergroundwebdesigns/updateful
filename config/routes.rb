@@ -1,19 +1,12 @@
 Updateful::Application.routes.draw do
   
+  devise_for :users
+
   root :to => 'content#index'
   
   resources :services
 
   resources :addresses
-
-  match "/signup" => "users#new"
-  
-  resources :users do
-    collection do
-      get 'login'  => "users#login"
-      post 'login' => "users#authorize"
-    end
-  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
