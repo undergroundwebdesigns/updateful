@@ -31,6 +31,11 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @user }
     end
   end
+  
+  # GET /login
+  def login
+    @user = User.new
+  end
 
   # GET /users/1/edit
   def edit
@@ -64,6 +69,19 @@ class UsersController < ApplicationController
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  # PUT /authorize
+  def authorize    
+    respond_to do |format|
+      if User.login(params[:user])
+        format.html { redirect_to(@user, :notice => 'Successfully logged in.') }
+        format.xml  { render :xml => @user }
+      else
+        format.html { render :action => "login" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end

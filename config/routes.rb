@@ -6,6 +6,9 @@ Updateful::Application.routes.draw do
 
   resources :addresses
 
+  match "/signup" => "users#new"
+  match "/login"  => "users#login"
+  match "/authorize" => "users#authorize"
   resources :users
 
   # The priority is based upon order of creation:
