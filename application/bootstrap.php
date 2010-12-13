@@ -46,7 +46,7 @@ if (isset($_ENV['KOHANA_ENV']))
 }
 else
 {
-	Koahan::$environment = Kohana::PRODUCTION;
+	Kohana::$environment = Kohana::PRODUCTION;
 }
 
 /**
@@ -62,9 +62,22 @@ else
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array(
-	'base_url'   => '/',
-));
+
+if (Kohana::$environment === Kohana::DEVELOPMENT OR Kohana::$environment === Kohana::TESTING)
+{
+	$init_settings = array(
+		'base_url' => '/',
+	);
+}
+else // Production settings... these are the defaults if the above test fails, since they should be the strictest:
+{
+	$init_settings = array(
+		'base_url' => '/',
+		'profile' => FALSE,
+		'caching' => TRUE,
+	);
+}
+Kohana::init($init_settings);
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -90,8 +103,14 @@ Kohana::modules(array(
 	// 'pagination' => MODPATH.'pagination', // Paging of results
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-	'migraiton'		=> MODPATH.'migration',  // Handles easy database migrations
+	'migration'		=> MODPATH.'migration',  // Handles easy database migrations
+	'restfulforms'	=> MODPATH.'restfulforms'// Overrides the form helper and reqeust object to allow form methods besides "GET" and "POST".
 	));
+	
+/**
+* Set the cookie salt, used to protect cookies from outside tampering:
+*/
+Cookie::$salt = 'myCookieS@lt';
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
