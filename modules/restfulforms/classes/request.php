@@ -2,7 +2,7 @@
 /**
  * Overloading the default Kohana request class adding fake REST.
  *
- * @package    Updateful
+ * @package    Restfull Forms
  * @category   Base
  * @author     Alex Willemsma
  * @copyright  (c) 2010 Updateful

@@ -4,7 +4,7 @@
  * Adding an extra field called _request_method if the form is created
  * to have a method other than GET or POST.
  *
- * @package    Updateful
+ * @package    Restfull Forms
  * @category   Helpers
  * @author     Alex Willemsma
  * @copyright  (c) 2010 Updateful

@@ -47,6 +47,7 @@ if (isset($_ENV['KOHANA_ENV']))
 else
 {
 	Kohana::$environment = Kohana::PRODUCTION;
+	define('IN_PRODUCTION', true);
 }
 
 /**
@@ -116,20 +117,44 @@ Cookie::$salt = 'myCookieS@lt';
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+Route::set('about', 'about(/)')
+	->defaults(array(
+		'controller' 	=> 'home',
+		'action'		=> 'about',
+	));
+	
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'welcome',
+		'controller' => 'home',
 		'action'     => 'index',
 	));
 
 if ( ! defined('SUPPRESS_REQUEST'))
 {
-	/**
-	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
-	 * If no source is specified, the URI will be automatically detected.
-	 */
-	echo Request::instance()
-		->execute()
-		->send_headers()
-		->response;
+	// Instantiate your Request object
+	$request = Request::instance();
+
+	try
+	{
+		$request->execute();
+	}
+	catch (Exception $e) // if its not valid, it gets caught here
+	{
+		if (!defined('IN_PRODUCTION')) // if this is Development, its displays the error
+		{
+			throw $e;
+		}
+		// if its IN_PRODUCTION, it does the following:
+		// Logs the error
+		Kohana::$log->add(Kohana::ERROR, Kohana::exception_text($e));
+		// Marks the status as 404
+		$request->status = 404;
+		// Renders the View for your CUSTOM 404 of your choice
+		$request->response = View::factory('public/templates/main') //your view may be different
+		->set('title', '404')
+		->set('content', View::factory('errors/404')); //again, your view may be different
+	}
+	// then continues on with the request process to display your custom 404 page
+	$request->send_headers()->response;
+	echo $request->response;
 }
