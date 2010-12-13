@@ -1,8 +1,0 @@
-<div id="open_id"><a href="">OpenID</a></div>
-<%= form_for @user, :url => {:action => 'login'} do |form| %>
-	<%= form.label :email, 'Email Address' %>
-	<%= form.text_field :email %>
-	<%= form.label :password, 'Password' %>
-	<%= form.password_field :password %>
-	<%= form.submit %>
-<% end %>
