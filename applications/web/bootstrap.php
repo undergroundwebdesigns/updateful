@@ -105,7 +105,6 @@ Kohana::modules(array(
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	'migration'		=> MODPATH.'migration',  // Handles easy database migrations
-	'restfulforms'	=> MODPATH.'restfulforms'// Overrides the form helper and reqeust object to allow form methods besides "GET" and "POST".
 	));
 	
 /**

@@ -58,3 +58,7 @@
 2010-12-12 23:12:34 --- ERROR: Kohana_Request_Exception [ 0 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 674 ]
 2010-12-12 23:15:04 --- ERROR: Kohana_Request_Exception [ 0 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 674 ]
 2010-12-12 23:15:28 --- ERROR: Kohana_Request_Exception [ 0 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 674 ]
+2010-12-12 23:24:01 --- ERROR: Kohana_Request_Exception [ 0 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 674 ]
+2010-12-12 23:32:08 --- ERROR: ErrorException [ 1 ]: Class 'Template_Controller' not found ~ APPPATH/classes/controller/home.php [ 3 ]
+2010-12-12 23:32:09 --- ERROR: Kohana_Request_Exception [ 0 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 674 ]
+2010-12-12 23:32:25 --- ERROR: Kohana_Request_Exception [ 0 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 674 ]
