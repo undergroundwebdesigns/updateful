@@ -303,3 +303,9 @@ input[type=submit]:hover{background-color: #FFB733;}
 background: #FFB733 url(../images/tag_close.png) no-repeat;
 cursor: pointer;
 }
+
+.js_gmaps_canvas
+{
+	width: 410px;
+	height: 410px;
+}

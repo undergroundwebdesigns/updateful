@@ -21,6 +21,9 @@
 	maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
 	-->
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+	
+	<!-- Load the google maps JS -->
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
@@ -72,9 +75,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script>!window.jQuery && document.write('<script src="/js/jquery-1.4.2.min.js"><\/script>')</script>
 
-
 <script src="/js/plugins.js?v=1"></script>
-<script src="/js/script.js?v=1"></script>
+<script src="/js/main.js?v=1"></script>
 
 <!--[if lt IE 7 ]>
 <script src="js/dd_belatedpng.js?v=1"></script>
@@ -88,23 +90,15 @@
 
 <!-- SCRIPTS -->
 <script>
-$('#show_map').click(function() {
-
-	$('#look_map_show').toggle('slow', function() {
-		// Animation complete.
-	});
-});
-</script>
-<script>
 $('#show_tag').click(function() {
-	$('#look_tag_hover').toggle('slow', function() {
+	$('#look_tag_hover').toggle(0, function() {
 		// Animation complete.
 	});
 });
 </script>
 <script>
 $('#show_photo').click(function() {
-	$('#look_photo_show').toggle('slow', function() {
+	$('#look_photo_show').toggle(0, function() {
 		// Animation complete.
 	});
 });
