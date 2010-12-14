@@ -64,7 +64,14 @@ else
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 
-if (Kohana::$environment === Kohana::DEVELOPMENT OR Kohana::$environment === Kohana::TESTING)
+if (Kohana::$environment === Kohana::DEVELOPMENT)
+{
+	$init_settings = array(
+		'base_url' => '/',
+		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
+	);
+}
+elseif (Kohana::$environment === Kohana::TESTING)
 {
 	$init_settings = array(
 		'base_url' => '/',
