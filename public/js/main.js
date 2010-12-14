@@ -51,7 +51,7 @@ var main_js = {
 		}
 		
 		collection.each(jQuery.proxy(function(index, el){
-			if ($(el).is(":visible"))
+			if ($(el).is(":visible") && $(el).children().length == 0)
 			{
 				var myOptions = {
 					zoom: 10,
