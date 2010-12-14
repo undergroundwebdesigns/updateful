@@ -77,6 +77,8 @@ elseif (Kohana::$environment === Kohana::TESTING)
 		'base_url' => '/',
 		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
+	
+	// Testing... remove ltaer.
 }
 else // Production settings... these are the defaults if the above test fails, since they should be the strictest:
 {
