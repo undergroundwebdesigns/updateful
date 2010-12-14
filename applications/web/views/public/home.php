@@ -5,9 +5,9 @@
 			<b class="tl"></b>
 			<b class="tr"></b>
 		</b>
-		<div class="inner">	
+		<?= form::open(Route::url('item', array('action' => 'create')), array('class' => 'inner')); ?>
 			<div class="hd">
-				<h1 class="core_input"> <div class="unit size1of2">I'm Looking For: </div> <div class="unit size1of2"><input type="text" name="textfield" id="textfield" /></div></h1>
+				<h1 class="core_input"> <div class="unit size1of2"><?= __('I\'m Looking For:'); ?></div> <div class="unit size1of2"><?= form::input('looking_for'); ?></div></h1>
 			</div>
 			<div class="bd">
 				<div class="line">
@@ -16,7 +16,7 @@
 						<div id="look_location" class="media">
 							<a href="#" class="img"><img src="images/pin.png" alt="" class="img" />
 								<div class="bd">
-									<p>Near Where?</p>
+									<p><?= __('Near Where?'); ?></p>
 								</div>
 							</a>
 						</div>
@@ -26,7 +26,7 @@
 						<div id="look_photo" class="media">
 							<a href="#" class="img"><img src="images/camera.png" alt="" class="img" />
 								<div class="bd">
-									<p>Choose Photo</p>
+									<p><?= __('Choose Photo'); ?></p>
 								</div>
 							</a>
 						</div>
@@ -38,7 +38,7 @@
 						<div id="look_tag" class="media">
 							<a href="#" class="img"><img src="images/tag.png" alt="" class="img"/>
 								<div class="bd">
-									<p>Describe what you need</p>
+									<p><?= __('Describe what you need'); ?></p>
 								</div>
 							</a>
 						</div>
@@ -52,25 +52,25 @@
 								<b class="tr"></b>
 							</b>
 							<div class="hd">
-								<h5>Where are you looking for this?</h5>
+								<h5><?= __('Where are you looking for this?'); ?></h5>
 							</div>
 							<div class="bd">
 								<div class="line">
 
 									<div class="unit size2of3">
 										<p>
-											<input type="text" name="textfield" id="textfield" value="What City?"/>
+											<?= form::input('looking_for_city', __('What City?')); ?>
 										</p>
 									</div> 
 									<div class="unit size1of3 lastUnit">
 										<p>
-											<input type="submit" value="Change City" class="city">
+											<?= form::input('looking_for_change_city', __('Change City?'), array('type' => 'submit', 'class' => 'city')); ?>
 										</p>
 									</div>
 
 								</div>
 								<div class="media">
-									<iframe width="400" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;hq=&amp;hnear=26+William+St,+Hataitai+6021,+Wellington,+New+Zealand&amp;ll=-41.318044,174.809475&amp;spn=0.025399,0.047207&amp;z=13&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/?ie=UTF8&amp;hq=&amp;hnear=26+William+St,+Hataitai+6021,+Wellington,+New+Zealand&amp;ll=-41.318044,174.809475&amp;spn=0.025399,0.047207&amp;z=13&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+									<iframe width="400" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;hq=&amp;hnear=26+William+St,+Hataitai+6021,+Wellington,+New+Zealand&amp;ll=-41.318044,174.809475&amp;spn=0.025399,0.047207&amp;z=13&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/?ie=UTF8&amp;hq=&amp;hnear=26+William+St,+Hataitai+6021,+Wellington,+New+Zealand&amp;ll=-41.318044,174.809475&amp;spn=0.025399,0.047207&amp;z=13&amp;source=embed" style="color:#0000FF;text-align:left"><?= __('View Larger Map'); ?></a></small>
 								</div>
 
 							</div>
@@ -85,33 +85,33 @@
 								<b class="tr"></b>
 							</b>
 							<div class="hd">
-								<h5>Upload a photo of something similar to what you are looking for:</h5>
+								<h5><?= __('Upload a photo of something similar to what you are looking for:'); ?></h5>
 							</div>
 							<div class="bd">
 
 								<div class="line">
 									<div class="unit size2of3">
 										<p>
-											<input type="text" name="textfield" id="textfield" value="Browse for Photo" onclick="this.value = '';"/>
+											<?= form::input('looking_for_photo_path', __('Browse for Photo')); ?>
 										</p>
 									</div> 
 									<div class="unit size1of3 lastUnit">
 										<p>
-											<input type="submit" value="Upload" class="upload">
+											<?= form::input('looking_for_photo_upload', __('Upload'), array('type' => 'submit', 'class' => 'upload')); ?>
 										</p>
 									</div>
 
-									<p>Or paste the URL of an image on the web here:</p>
+									<p><?= __('Or paste the URL of an image on the web here:'); ?></p>
 
 									<div class="line">
 										<div class="unit size2of3">
 											<p>
-												<input type="text" name="textfield" id="textfield" value="http://www.123.com/example.jpg" onclick="this.value = '';"/>
+												<?= form::input('looking_for_photo_url', 'http://www.123.com/example.jpg')?>
 											</p>
 										</div>
 										<div class="unit size1of3">
 											<p>
-												<input type="submit" value="Copy From Web" class="import">
+												<?= form::input('looking_for_photo_import', __('Copy From Web'), array('type' => 'submit', 'class' => 'import'))?>
 											</p>
 										</div>
 									</div>
@@ -133,20 +133,20 @@
 								<b class="tr"></b>
 							</b>
 							<div class="hd">
-								<h5>Add attributes to this thing:</h5>
-								<p>Separate with a comma (,) to add multiple attributes at once.</p>
+								<h5><?= __('Add attributes to this thing:'); ?></h5>
+								<p><?= __('Separate with a comma (,) to add multiple attributes at once.'); ?></p>
 							</div>
 							<div class="bd">
 
 								<div class="line">
 									<div class="unit size2of3">
 										<p>
-											<input type="text" name="textfield" id="textfield" value="Chair, Dark Wood, Rocker" onclick="this.value = '';"/>
+											<?= form::input('looking_for_tag', __('Chair, Dark Wood, Rocker')); ?>
 										</p>
 									</div> 
 									<div class="unit size1of3">
 										<p>
-											<input type="submit" value="Add Tag" class="add">
+											<?= form::input('looking_for_tag_submit', __('Add Tag'), array('type' => 'submit', 'class' => 'add'))?>
 										</p>
 									</div>
 								</div>
@@ -163,7 +163,7 @@
 					</div>
 				</div>
 			</div>	
-		</div>
+		<?= form::close(); ?>
 	</div>
 </div>
 

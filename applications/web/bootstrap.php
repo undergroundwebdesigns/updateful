@@ -68,6 +68,7 @@ if (Kohana::$environment === Kohana::DEVELOPMENT OR Kohana::$environment === Koh
 {
 	$init_settings = array(
 		'base_url' => '/',
+		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
 }
 else // Production settings... these are the defaults if the above test fails, since they should be the strictest:
@@ -76,6 +77,7 @@ else // Production settings... these are the defaults if the above test fails, s
 		'base_url' => '/',
 		'profile' => FALSE,
 		'caching' => TRUE,
+		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
 }
 Kohana::init($init_settings);
@@ -118,14 +120,18 @@ Cookie::$salt = 'myCookieS@lt';
  */
 Route::set('about', 'about(/)')
 	->defaults(array(
-		'controller' 	=> 'home',
-		'action'		=> 'about',
+		'controller' 	=> 'info',
+		'action'		=> 'index',
 	));
-	
+Route::set('item', 'item(/<action>(/<id>))')
+	->defaults(array(
+		'controller'	=> 'item',
+		'action'		=> 'index',
+	));
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'home',
-		'action'     => 'index',
+		'controller' => 'item',
+		'action'     => 'home',
 	));
 
 if ( ! defined('SUPPRESS_REQUEST'))
