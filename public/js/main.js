@@ -3,6 +3,7 @@
 */
 var main_js = {
 	postion: null,
+	accuracy: null,
 	maps: new Array(),
 
 	// Sets up. Gets the user's location
@@ -11,6 +12,7 @@ var main_js = {
 		// Set default location (currently newyork):
 		this.position = new google.maps.LatLng(40.713956, -74.003906);
 		
+		
 		this.get_location();
 		this.create_maps();
 	},
@@ -18,7 +20,11 @@ var main_js = {
 	get_location: function()
 	{
 		if (Modernizr.geolocation) {
-			navigator.geolocation.getCurrentPosition(jQuery.proxy(this.get_location_callback, this), jQuery.proxy(this.get_location_error, this));
+			var geo_prefs = {
+				enableHighAccuracy: mobile,
+				maximumAge: 300 // 5 minutes.
+			}
+			navigator.geolocation.getCurrentPosition(jQuery.proxy(this.get_location_callback, this), jQuery.proxy(this.get_location_error, this), geo_prefs);
 		} else {
 			// no native support; maybe try Gears?
 		}
@@ -27,6 +33,7 @@ var main_js = {
 	get_location_callback: function(position)
 	{
 		this.position = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		this.accuracy = position.coords.accuracy;
 		this.create_maps();
 	},
 
@@ -54,7 +61,7 @@ var main_js = {
 			if ($(el).is(":visible") && $(el).children().length == 0)
 			{
 				var myOptions = {
-					zoom: 10,
+					zoom: 15,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
 				this.maps[index] = new google.maps.Map(el, myOptions);

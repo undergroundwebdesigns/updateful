@@ -72,11 +72,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script>!window.jQuery && document.write('<script src="/js/jquery-1.4.2.min.js"><\/script>')</script>
 
-<?
-	$mobile = ((bool) Request::user_agent('mobile')) ? 'true' : 'false';
-?>
+<script type="text/javascript">
+	<? $mobile = (bool) Request::user_agent('mobile'); ?>
+	var mobile = <?= ($mobile) ? 'true' : 'false'; ?>;
+</script>
 <!-- Load the google maps JS -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=<?= $mobile ?>"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=<?=($mobile) ? 'true' : 'false' ?>"></script>
 
 <script src="/js/plugins.js?v=1"></script>
 <script src="/js/main.js?v=1"></script>
