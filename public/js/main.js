@@ -66,6 +66,17 @@ var main_js = {
 				};
 				this.maps[index] = new google.maps.Map(el, myOptions);
 				this.maps[index].setCenter(this.position);
+				
+				// If mobile, put a dot on the map:
+				if (mobile)
+				{
+					var markerOpts = {
+						clickable: false,
+						map: this.maps[index],
+						position: this.position
+					};
+					google.maps.Marker(markerOpts);
+				}
 			}
 		}, this));
 	}
