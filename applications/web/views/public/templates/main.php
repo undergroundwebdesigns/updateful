@@ -21,9 +21,6 @@
 	maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
 	-->
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-	
-	<!-- Load the google maps JS -->
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
@@ -74,6 +71,12 @@
 <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script>!window.jQuery && document.write('<script src="/js/jquery-1.4.2.min.js"><\/script>')</script>
+
+<?
+	$mobile = ((bool) Request::user_agent('mobile')) ? 'true' : 'false';
+?>
+<!-- Load the google maps JS -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=<?= $mobile ?>"></script>
 
 <script src="/js/plugins.js?v=1"></script>
 <script src="/js/main.js?v=1"></script>
