@@ -92,22 +92,6 @@
 <script src="/js/profiling/config.js?v=1"></script>
 <!-- end profiling code -->
 
-<!-- SCRIPTS -->
-<script>
-$('#show_tag').click(function() {
-	$('#look_tag_hover').toggle(0, function() {
-		// Animation complete.
-	});
-});
-</script>
-<script>
-$('#show_photo').click(function() {
-	$('#look_photo_show').toggle(0, function() {
-		// Animation complete.
-	});
-});
-</script>
-
 <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet 
 change the UA-XXXXX-X to be your site's ID -->
 <script>

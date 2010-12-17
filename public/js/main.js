@@ -9,12 +9,56 @@ var main_js = {
 	// Sets up. Gets the user's location
 	initialize: function()
 	{
+		this.initialize_forms();
+		
 		// Set default location (currently newyork):
 		this.position = new google.maps.LatLng(40.713956, -74.003906);
 		
-		
 		this.get_location();
 		this.create_maps();
+	},
+	
+	initialize_forms: function()
+	{
+		$('form').each(jQuery.proxy(function (index, el){
+			var func = jQuery.proxy(this.form_submit_handler, this);
+			$(el).bind('submit', func);
+		}, this));
+	},
+	
+	form_submit_handler: function(event)
+	{
+		event.preventDefault();
+		
+		var form = $(event.target);
+		
+		//start the ajax  
+		$.ajax({  
+			//this is the php file that processes the data and send mail  
+			url: form[0].action,   
+
+			//GET method is used  
+			type: "POST",  
+
+			//pass the data           
+			data: form.serialize(),       
+
+			//Do not cache the page  
+			cache: false,  
+
+			//success  
+			success: jQuery.proxy(this.form_submit_success_handler, this)
+		});
+	},
+	
+	form_submit_success_handler: function(result)
+	{
+		alert(result);
+	},
+	
+	form_submit_error_handler: function()
+	{
+		alert('error');
 	},
 
 	get_location: function()
@@ -90,5 +134,17 @@ $('#show_map').click(function() {
 
 	$('#look_map_show').toggle('slow', function() {
 		main_js.create_maps($('#look_map_show'));
+	});
+});
+
+$('#show_tag').click(function() {
+	$('#look_tag_hover').toggle('slow', function() {
+		// Animation complete.
+	});
+});
+
+$('#show_photo').click(function() {
+	$('#look_photo_show').toggle('slow', function() {
+		// Animation complete.
 	});
 });

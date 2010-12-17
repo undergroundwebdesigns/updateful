@@ -60,6 +60,8 @@
 									<div class="unit size2of3">
 										<p>
 											<?= form::input('looking_for_city', __('What City?')); ?>
+											<?= form::input('looking_for_latitude', null, array('type' => 'hidden')); ?>
+											<?= form::input('looking_for_longitude', null, array('type' => 'hidden')); ?>
 										</p>
 									</div> 
 									<div class="unit size1of3 lastUnit">
@@ -182,7 +184,11 @@
 						<div class="media">
 							<a href=""class="img"><img src="images/pin.png" alt="" class="img" />
 								<div class="bd">
-									<p><?= __('Near Where?'); ?></p>
+									<p>
+										<?= __('Near Where?'); ?>
+										<?= form::input('found_latitude', null, array('type' => 'hidden')); ?>
+										<?= form::input('found_longitude', null, array('type' => 'hidden')); ?>
+									</p>
 								</div>
 							</a>
 						</div>

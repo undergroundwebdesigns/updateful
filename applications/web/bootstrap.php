@@ -44,6 +44,10 @@ if (isset($_ENV['KOHANA_ENV']))
 {
 	Kohana::$environment = $_ENV['KOHANA_ENV'];
 }
+elseif (isset($_SERVER['KOHANA_ENV']))
+{
+	Kohana::$environment = $_SERVER['KOHANA_ENV'];
+}
 else
 {
 	Kohana::$environment = Kohana::PRODUCTION;
@@ -115,6 +119,7 @@ Kohana::modules(array(
 	// 'pagination' => MODPATH.'pagination', // Paging of results
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	'rdf'			=> MODPATH.'rdf',		 // Provides an rdf ORM and data store access.
 	));
 	
 /**

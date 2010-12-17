@@ -4,6 +4,16 @@ class Controller_Item extends Controller_Template {
 	
 	public $template = 'public/templates/main';
 	
+	public function before()
+	{
+		if (Request::$is_ajax)
+		{
+			$this->template = 'public/templates/json';
+		}
+		
+		return parent::before();
+	}
+	
 	/**
 	 * Displays the home page, with options to enter either what they found or what they're looking for.
 	 */
@@ -26,7 +36,21 @@ class Controller_Item extends Controller_Template {
 	 */
 	public function action_create()
 	{
+		$item = RDFORM::factory('item');
+		$item->load_from_array($_POST);
+		$item->save();
 		
+		if ($item->saved)
+		{
+			$data['flash'] = Kohana::message('item_created');
+		}
+		else
+		{
+			$data['flash'] = Kohana::message('error_creating_item');
+			$data['errors'] = $item->validation_errors;
+		}
+		
+		$this->template->data = $data;
 	}
 	
 	/**
