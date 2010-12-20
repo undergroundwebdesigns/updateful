@@ -75,6 +75,13 @@ if (Kohana::$environment === Kohana::DEVELOPMENT)
 		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
 }
+elseif (Kohana::$environment === 'development_ben')
+{
+	$init_settings = array(
+		'base_url' => '/updateful',
+		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
+	);
+}
 elseif (Kohana::$environment === Kohana::TESTING)
 {
 	$init_settings = array(
