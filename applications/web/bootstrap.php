@@ -78,7 +78,7 @@ if (Kohana::$environment === Kohana::DEVELOPMENT)
 elseif (Kohana::$environment === 'development_ben')
 {
 	$init_settings = array(
-		'base_url' => '/updateful',
+		'base_url' => '/updateful/public',
 		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
 }
