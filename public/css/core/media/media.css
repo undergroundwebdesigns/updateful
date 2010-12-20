@@ -7,3 +7,9 @@
 .media .img{float:left;/*margin-right: 10px;*/}
 .media .img img{display:block;}
 .media .imgExt{float:right; /*margin-left: 10px;*/}
+
+
+/* image size formats */
+
+.size75 {max-width: 75px; max-height: 75px}
+.size50 {max-width: 50px; max-height: 50px;}

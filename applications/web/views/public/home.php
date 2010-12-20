@@ -1,4 +1,4 @@
-<!--     LOOKIGN FOR BLOCK -->
+<!--     LOOKING FOR BLOCK -->
 <div class="unit size1of2">
 	<div class="mod simple">
 		<b class="top">
@@ -166,6 +166,103 @@
 			</div>	
 		<?= form::close(); ?>
 	</div>
+	
+<!-- 	LOOKING FOR LIST -->
+<!-- Begin single List Element -->
+		<div class="mod simple">
+			<div class="inner">
+				<div class="hd">
+					<div class="unit size1of3">
+						<h3>Rocking Chair</h3><!-- Item Name -->
+						<p><a href="#">Ben Hanna</a><br /><!-- Member Name -->
+						<a href="#" class="date">Dec. 20th 2010</a></p><!-- Date -->
+					</div>
+					<div class="unit size2of3">
+						<ul class="thumb">
+							<li>
+								<img src="http://egadfundraising.com/wp-content/uploads/2008/04/classic-rocking-chair.jpg" alt=""/>
+							</li>
+							<li>
+								<img src="http://www.acupuncturebrooklyn.com/wp-content/uploads/2009/12/rocking-chair_mesquite.jpg" alt=""/>
+							</li>
+							<li>
+								<img src="http://ludogorie91.com/images/products/big/RockingChair.jpg" alt=""/>
+							</li>
+							<li>
+								<img src="http://www.toystore.info/images/KidKraft_Adult_Rocking_Chair-Natural.jpg" alt=""/>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="bd">
+					<div class="unit size1of3">
+						<h4>I am looking for:</h4> <p>A Rocking chair in good condition that can be outside on a porch. Not painted.</p>
+					</div>
+					<div class="unit size2of3">
+						<ul class="tag_list">
+							<li>Chair</li>
+							<li>Dark Wood</li>
+							<li>Rocker</li>
+							<li>Lathe Turned</li>
+							<li>Pre 1920</li>
+							<li>Good Condition</li>
+							<li>Deliverable</li>
+							<li>
+								<?= form::input('looking_for_tag_submit', __(''), array('type' => 'submit', 'class' => 'add'))?>
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+<!-- End single list element -->
+
+<!-- Begin single List Element -->
+		<div class="mod simple">
+			<div class="inner">
+				<div class="hd">
+					<div class="unit size1of3">
+						<h3>Mustang Convertable</h3><!-- Item Name -->
+						<p><a href="#">Ben Hanna</a><br /><!-- Member Name -->
+						<a href="#" class="date">Dec. 20th 2010</a></p><!-- Date -->
+					</div>
+					<div class="unit size2of3">
+						<ul class="thumb">
+							<li>
+								<img src="http://www.classicconvertibles.net/pictures/cars/9914/1961%20Chevrolet%20Corvette%20blue%20002.jpg" alt=""/>
+							</li>
+							<li>
+								<img src="http://i114.photobucket.com/albums/n245/LiveFromNY/66mustang.jpg" alt=""/>
+							</li>
+							<li>
+								<img src="http://www.corvetteblogger.com/images/content/042610_4.jpg" alt=""/>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="bd">
+					<div class="unit size1of3">
+						<h4>I am looking for:</h4> <p>A super fast blue Mustang convertible from 1961.</p>
+					</div>
+					<div class="unit size2of3">
+						<ul class="tag_list">
+							<li>1961</li>
+							<li>Mustang</li>
+							<li>Convertable</li>
+							<li>Mint Condition</li>
+							<li>Blue</li>
+							<li>
+								<?= form::input('looking_for_tag_submit', __(''), array('type' => 'submit', 'class' => 'add'))?>
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+<!-- End single list element -->
+
 </div>
 
 <div class="unit size1of2">

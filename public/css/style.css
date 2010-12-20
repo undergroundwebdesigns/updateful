@@ -285,7 +285,6 @@ input[type=submit]:hover{background-color: #FFB733;}
 .city {background: url(../images/globe_small.png) no-repeat 1px 1px}
 
 
-
 /* Tag Styles */
 
 .tag_list li {
@@ -299,13 +298,49 @@ input[type=submit]:hover{background-color: #FFB733;}
 	margin-bottom: 2px;
 }
 
+.tag_list li:last-child{
+	background-color: rgba(255,255,255,1);
+	background-image: none;
+	padding: 0px;
+}
+
 .tag_list li:hover{
 background: #FFB733 url(../images/tag_close.png) no-repeat;
 cursor: pointer;
 }
 
+/* Maps Styles */
+
 .js_gmaps_canvas
 {
 	width: 410px;
 	height: 410px;
+}
+
+/* thumbnail hover styles */
+ul.thumb {
+	float: left;
+	list-style: none;
+	margin: 0; padding: 10px;
+	width: 360px;
+}
+ul.thumb li {
+	margin: 0; padding: 5px;
+	float: left;
+	position: relative;  /* Set the absolute positioning base coordinate */
+	width: 60px;
+	height: 60px;
+}
+ul.thumb li img {
+	width: 50px; height: 50px; /* Set the small thumbnail size */
+	-ms-interpolation-mode: bicubic; /* IE Fix for Bicubic Scaling */
+	border: 1px solid #ddd;
+	padding: 5px;
+	background-color: #f0f0f0;
+	position: absolute;
+	left: 0; top: 0;
+}
+ul.thumb li img.hover {
+	background-color: #FFB733;
+	border: none; /* Get rid of border on hover */
 }

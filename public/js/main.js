@@ -130,6 +130,39 @@ $(document).ready(function() {
 	main_js.initialize();
 });
 
+/* UI JS TO BE UPDATED */
+
+/* Thumbnail hover effect */
+
+$("ul.thumb li").hover(function() {
+	$(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/ 
+	$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
+		.animate({
+			marginTop: '-80px', /* The next 4 lines will vertically align this image */ 
+			marginLeft: '-80px',
+			top: '50%',
+			left: '50%',
+			width: '130px', /* Set new width */
+			height: '130px', /* Set new height */
+			padding: '10px'
+		}, 200); /* this value of "200" is the speed of how fast/slow this hover animates */
+
+	} , function() {
+	$(this).css({'z-index' : '0'}); /* Set z-index back to 0 */
+	$(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
+		.animate({
+			marginTop: '0', /* Set alignment back to default */
+			marginLeft: '0',
+			top: '0',
+			left: '0',
+			width: '50px', /* Set width back to default */
+			height: '50px', /* Set height back to default */
+			padding: '5px'
+		}, 400);
+});
+
+/* Show individual item update blocks */
+
 $('#show_map').click(function() {
 
 	$('#look_map_show').toggle('slow', function() {
