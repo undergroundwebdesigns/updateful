@@ -20,6 +20,11 @@ class Kohana_RDF_ORM
 	
 	protected $object = array();
 	
+	protected $namespaces = array();
+	protected $subject = null;
+	
+	protected $validation_rules = array();
+	
 	private $readonly_properties = array('saved', 'loaded', 'store_name');
 	
 	public static function factory($model_name)
@@ -84,6 +89,41 @@ class Kohana_RDF_ORM
 	
 	public function save()
 	{
+		if (!$this->object['created_at'])
+		{
+			$this->object['created_at'] = time();
+		}
 		
+		$this->object['updated_at'] = time();
+		
+		if ($this->validate())
+		{
+			$this->db->save($this->object);
+		}
+	}
+	
+	public function validate()
+	{
+		return true;
+	}
+	
+	public function find()
+	{
+		
+	}
+	
+	public function find_all()
+	{
+		
+	}
+	
+	public function where($field, $val)
+	{
+		$this->db->where($field, $val);
+	}
+	
+	public function order_by($field, $asc = 'ASC')
+	{
+		$this->db->order_by($field, $asc);
 	}
 }
