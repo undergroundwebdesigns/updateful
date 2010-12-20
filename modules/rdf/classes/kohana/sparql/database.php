@@ -10,6 +10,12 @@
 
 abstract class Kohana_Sparql_Database
 {
+	private $store = null;
+	
+	private $query = null;
+	private $where = array();
+	private $order_by = array();
+	
 	public static function factory($store_name)
 	{
 		$rdf_store_type = ucfirst(Kohana::config('rdform.rdf_store_type'));
@@ -37,23 +43,82 @@ abstract class Kohana_Sparql_Database
 		return $instance;
 	}
 	
-	private function __construct($store_name)
+	abstract private function __construct($store_name);
+	
+	public function find($subject)
+	{
+		$query = $this->subject.$this->_complile_where().$this->_compile_order_by();
+		return $this->query();
+	}
+	
+	public function insert($subject, array $data)
+	{
+		$subject = $this->rdf_url_format($subject);
+		
+		$query = 'INSERT INTO <http://'.$_SERVER['SERVER_NAME'].$this->store_name.' {'."\n";
+		foreach ($data as $key => $val)
+		{
+			$query .= $subject.' '.$this->rdf_url_format($key).' '.$this->rdf_val_format($val);
+		}
+		$query .= ' .';
+		
+		return $this->query();
+	}
+	
+	public function delete($subject)
+	{
+		if ($this->where)
+		{
+			$query = 'DELETE'."\n";
+			foreach ($this->where as $field => $val)
+			{
+				$query .= 
+			}
+		}
+	}
+	
+	abstract public function query();
+	
+	public function subject()
 	{
 		
 	}
 	
-	public function load()
+	public function where($field, $val)
 	{
-		
+		$this->where[$field] = $val;
 	}
 	
-	public function insert()
+	public function order_by($field, $asc = 'ASC')
 	{
-		
+		if ($asc != 'ASC' AND $asc != 'DESC')
+			throw new Kohana_Sparql_Exception('invalid order by. Can only order ASC or DESC, '.$asc.' given.');
+			
+		$this->order_by_asc = $asc;
+		$this->order_by = $field;
 	}
 	
-	public function delete()
+	protected function _complile_where()
 	{
+		if (!$this->where)
+			return '';
+			
+		$output = 'WHERE {'."\n";
+		foreach ($this->where as $tripple)
+		{
+			$output .= $tripple['s'].' '.$tripple['p'].' '.$tripple['o'].' .'."\n";
+		}
+		$output .= '}'."\n";
 		
+		return $output;
+	}
+	
+	protected function _complie_order_by()
+	{
+		if (!$this->order_by)
+			return '';
+			
+		$output = 'ORDER BY '.$this->order_by_asc.'('.$this->order_by.')'."\n";
+		return $output;
 	}
 }

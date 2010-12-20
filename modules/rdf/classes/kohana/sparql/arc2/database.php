@@ -13,9 +13,7 @@ include_once(MODPATH.'rdf'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'arc
 
 class Kohana_Sparql_Arc2_Database extends Kohana_Sparql_Database {
 	
-	private $arc = null;
-	
-	public function __construct($store_name)
+	private function __construct($store_name)
 	{
 		// Load configuration options:
 		$config = Kohana::config('rdform');
@@ -35,12 +33,12 @@ class Kohana_Sparql_Arc2_Database extends Kohana_Sparql_Database {
 		$arc_config = array_merge($config['mysql_connections'][$db_connection], $config['rdf_connections'][$rdf_connection]);
 		
 		// Instantiate an ARC object:
-		$this->arc = ARC2::getStore($arc_config);
+		$this->store = ARC2::getStore($arc_config);
 		
 		// Set up the new ARC object if not done yet:
-		if (!$this->arc->isSetUp())
+		if (!$this->store->isSetUp())
 		{
-			$this->arc->setUp();
+			$this->store->setUp();
 		}
 	}
 	
