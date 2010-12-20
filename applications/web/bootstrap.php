@@ -71,21 +71,21 @@ else
 if (Kohana::$environment === Kohana::DEVELOPMENT)
 {
 	$init_settings = array(
-		'base_url' => '',
+		'base_url' => '/',
 		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
 }
 elseif (Kohana::$environment === 'development_ben')
 {
 	$init_settings = array(
-		'base_url' => '/updateful/public',
+		'base_url' => '/updateful/public/',
 		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
 }
 elseif (Kohana::$environment === Kohana::TESTING)
 {
 	$init_settings = array(
-		'base_url' => '',
+		'base_url' => '/',
 		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
 	);
 	
@@ -94,7 +94,7 @@ elseif (Kohana::$environment === Kohana::TESTING)
 else // Production settings... these are the defaults if the above test fails, since they should be the strictest:
 {
 	$init_settings = array(
-		'base_url' => '',
+		'base_url' => '/',
 		'profile' => FALSE,
 		'caching' => TRUE,
 		'index_file' => '', // Used so that URLs are created correctly, without referencing index.php
